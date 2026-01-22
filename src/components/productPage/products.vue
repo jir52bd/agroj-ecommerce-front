@@ -8,6 +8,7 @@
           :key="index"
           class="text-center group cursor-pointer"
         >
+        <RouterLink :to="{ name: 'ProductDetails', params: { id: index } }">
           <!-- Image Wrapper -->
           <div class="relative w-full max-w-[220px] mx-auto mb-4">
 
@@ -32,7 +33,9 @@
           <p class="text-xs text-gray-600 mt-1">
             from Tk {{ item.price }}
           </p>
+          </RouterLink>
         </div>
+        
       </div>
 
       <div class="flex justify-center mt-12">
