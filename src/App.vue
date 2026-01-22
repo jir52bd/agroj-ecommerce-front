@@ -3,6 +3,7 @@ import BulletinNav from './layout/BulletinNav.vue';
 import HeadingNav from './layout/HeadingNav.vue';
 import MainNav from './layout/MainNav.vue';
 import Footer from './layout/Footer.vue';
+// import Navbar from './layout/Navbar.vue';
 
 
 </script>
@@ -13,6 +14,7 @@ import Footer from './layout/Footer.vue';
     <BulletinNav />
     <HeadingNav />
     <MainNav />
+    <!-- <Navbar /> -->
     <main class="p-0">
       <router-view />
     </main>

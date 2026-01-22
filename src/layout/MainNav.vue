@@ -6,12 +6,9 @@
       >
         <!-- Normal items -->
         <li v-for="item in normalMenu" :key="item">
-          <a
-            href="/"
-            class="hover:text-gray-500 transition-colors duration-200"
-          >
-            {{ item }}
-          </a>
+          <router-link :to="item.link" class="hover:text-gray-500 transition-colors duration-200">
+            {{ item.name }}
+          </router-link>
         </li>
 
         <!-- Dropdown -->
@@ -40,7 +37,7 @@
                 class="block px-4 py-2 text-xs tracking-wide uppercase text-gray-700
                        hover:bg-gray-100"
               >
-                {{ sub }}
+                {{ sub.name }}
               </a>
             </li>
           </ul>
@@ -52,7 +49,7 @@
             href="#"
             class="hover:text-gray-500 transition-colors duration-200"
           >
-            {{ item }}
+            {{ item.name  }}
           </a>
         </li>
       </ul>
@@ -62,23 +59,26 @@
 
 <script setup>
 const normalMenu = [
-  "Home",
-  "New Arrivals",
-  "Discount Collection",
+  {name: "Home", link: "/"},
+  {name: 'New Arrivals', link: "/products"},
+  {name: "Discount Collection", link: "/products"},
 ]
 
 const areaRugs = [
-  "Living Room",
-  "Bedroom",
-  "Dining",
-  "Runner Rugs",
+  {name: "All Rugs", link: "/products"},
+  {name: "Living Room", link: "/products"},
+  {name: "Bedroom", link: "/products"},
+  {name: "Dining", link: "/products"},
+  {name: "Runner Rugs", link: "/products"},
 ]
 
 const afterDropdown = [
-  "Doormats",
-  "Table Accents",
-  "Multi-Purpose Mats",
-  "Baskets",
-  "Christmas Collection",
+  {name: "Outdoor Rugs", link: "/products"},
+  {name: "Kids Rugs", link: "/products"},
+  {name: "Doormats", link: "/products"},
+  {name: "Table Accents", link: "/products"},
+  {name: "Multi-Purpose Mats", link: "/products"},
+  {name: "Baskets", link: "/products"},
+  {name: "Christmas Collection", link: "/products"},
 ]
 </script>

@@ -41,6 +41,11 @@ const routes = [
     name: 'RefundPolicy',
     component: () => import('../pages/additional/RefundPolicy.vue'),
   },
+  { 
+    path: '/products',
+    name: 'Products',
+    component: () => import('../pages/Products.vue'),
+  },
   {
     path: '/:pathMatch(.*)*', 
     name: 'NotFound',
