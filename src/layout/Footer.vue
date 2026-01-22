@@ -10,13 +10,27 @@
       <!-- Links -->
       <div>
         <ul class="space-y-3 text-sm">
-          <li><a href="#" class="hover:text-green-600">About Us</a></li>
-          <li><a href="#" class="hover:text-green-600">Contact Us</a></li>
-          <li><a href="#" class="hover:text-green-600">Payment Options</a></li>
-          <li><a href="#" class="hover:text-green-600">Store Locations</a></li>
-          <li><a href="#" class="hover:text-green-600">Terms & Conditions</a></li>
-          <li><a href="#" class="hover:text-green-600">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-green-600">Refund Policy</a></li>
+          <li>
+            <router-link :to="'/about-us'" class="hover:text-green-600">About Us</router-link>
+          </li>
+          <li>
+            <router-link :to="'/contact-us'" class="hover:text-green-600">Contact Us</router-link>
+          </li>
+          <li>
+            <router-link :to="'/payment-us'" class="hover:text-green-600">Payment Options</router-link>
+          </li>
+          <li>
+            <router-link :to="'/store-location'" class="hover:text-green-600">Store Locations</router-link>
+          </li>
+          <li>
+            <router-link :to="'/terms-of-service'" class="hover:text-green-600">Terms & Conditions</router-link>
+          </li>
+          <li>
+            <router-link :to="'/privacy-policy'" class="hover:text-green-600">Privacy Policy</router-link>
+          </li>
+          <li>
+            <router-link :to="'/refund-policy'" class="hover:text-green-600">Refund Policy</router-link>
+          </li>
         </ul>
       </div>
 

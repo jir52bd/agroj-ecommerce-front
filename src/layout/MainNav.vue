@@ -7,7 +7,7 @@
         <!-- Normal items -->
         <li v-for="item in normalMenu" :key="item">
           <a
-            href="#"
+            href="/"
             class="hover:text-gray-500 transition-colors duration-200"
           >
             {{ item }}
