@@ -1,4 +1,9 @@
 <script setup>
+import { useCartStore } from "../store/useCartStore"
+import { useRouter } from "vue-router"
+
+const cart = useCartStore()
+const router = useRouter()
 
 </script>
 
@@ -30,12 +35,28 @@
                         </button>
 
                         <!--Cart button-->
-                        <button class="flex item-center gap-1 hover:text-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                            </svg>
-                            <span class="text-xs">Cart - 0</span>
-                        </button>
+                        <button
+  @click="router.push('/cart')"
+  class="relative flex items-center gap-1 hover:text-black"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+       viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round"
+          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+  </svg>
+
+  <span class="text-xs">Cart</span>
+
+  <!-- Cart Count -->
+  <span
+    v-if="cart.cartCount"
+    class="absolute -top-4 -right-5 text-[10px] px-1.5 py-0.5
+           bg-black text-white rounded-full"
+  >
+    {{ cart.cartCount }}
+  </span>
+</button>
+
                     </div>
                 </div>
             </div>

@@ -41,16 +41,33 @@ const routes = [
     name: 'RefundPolicy',
     component: () => import('../pages/additional/RefundPolicy.vue'),
   },
-  { 
-    path: '/products',
-    name: 'Products',
+  // {
+  //   path: "/products/:category?/:sub?/:child?",
+  //   name: "products",
+  //   component: () => import('../pages/product/Products.vue'),
+  // },
+  {
+    path: "/products/:category?/:sub?/:child?",
+    name: "products",
     component: () => import('../pages/Products.vue'),
   },
-  {
-    path: '/products/:id',
-    name: 'ProductDetails',
-    component: () => import('../pages/ProductDetails.vue'),
+ {
+    path: "/product/:id",
+    name: "product-details",
+    component: () => import("../pages/ProductDetails.vue"),
   },
+  {
+  path: "/cart",
+  name: "cart",
+  component: () => import("../pages/Cart.vue"),
+},
+
+  // {
+  //   path: '/products/:id',
+  //   name: 'ProductDetails',
+  //   component: () => import('../pages/ProductDetails.vue'),
+  // },
+
   {
     path: '/:pathMatch(.*)*', 
     name: 'NotFound',
