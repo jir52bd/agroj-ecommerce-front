@@ -8,6 +8,16 @@
           <router-link to="/">Home</router-link>
         </li>
 
+        <!-- New Arrival Products -->
+        <li>
+          <router-link to="#">New Arrivals</router-link>
+        </li>
+
+        <!-- Discount Collection -->
+        <li>
+          <router-link to="#">Discount Collection</router-link>
+        </li>
+
         <!-- Dynamic categories -->
         <li
           v-for="category in productsData"

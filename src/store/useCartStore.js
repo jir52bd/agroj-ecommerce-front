@@ -32,6 +32,16 @@ export const useCartStore = defineStore("cart", {
       }
     },
 
+     increase(id) {
+      const item = this.items.find(i => i.product.id === id)
+      if (item) item.qty++
+    },
+
+    decrease(id) {
+      const item = this.items.find(i => i.product.id === id)
+      if (item && item.qty > 1) item.qty--
+    },
+
     remove(id) {
       this.items = this.items.filter(
         (i) => i.product.id !== id
