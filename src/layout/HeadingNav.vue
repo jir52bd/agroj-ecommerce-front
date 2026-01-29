@@ -54,7 +54,7 @@ const auth = useAuthStore()
                         <!-- Dropdown -->
                         <div class="absolute right-0 mt-2 w-40 bg-white border rounded shadow
                                     opacity-0 group-hover:opacity-100 transition">
-                            <a class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                            <a  @click="router.push('/profile')" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
                             <a class="block px-4 py-2 hover:bg-gray-100">Orders</a>
                             <a class="block px-4 py-2 hover:bg-gray-100">Wishes</a>
                             <button

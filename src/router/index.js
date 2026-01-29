@@ -108,6 +108,33 @@ const routes = [
   //   component: () => import('../pages/Wishes.vue'),
   //   meta: { requiresAuth: true },
   // },
+{
+  path: '/profile',
+  component: () => import('../layout/ProfileLayout.vue'),
+  meta: { requiresAuth: true },
+  children: [
+    {
+      path: '',
+      name: 'MyAccount',
+      component: () => import('../pages/profile/MyAccount.vue'),
+    },
+    // {
+    //   path: 'orders',
+    //   name: 'MyOrders',
+    //   component: () => import('../pages/profile/MyOrders.vue'),
+    // },
+    {
+      path: 'wishlist',
+      name: 'Wishlist',
+      component: () => import('../pages/profile/Wishlist.vue'),
+    },
+    // {
+    //   path: 'settings',
+    //   name: 'ProfileSettings',
+    //   component: () => import('../pages/profile/Settings.vue'),
+    // },
+  ],
+},
 
   /* =======================
      AUTH PAGES
