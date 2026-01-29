@@ -119,11 +119,11 @@ const routes = [
     component: () => import('../auth/Login.vue'),
   },
 
-  // {
-  //   path: '/register',
-  //   name: 'Register',
-  //   component: () => import('../pages/Register.vue'),
-  // },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../auth/Register.vue'),
+  },
 
   /* =======================
      404 PAGE (LAST)

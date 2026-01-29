@@ -32,5 +32,15 @@ function submit() {
     <p v-if="error" class="text-red-500 text-sm mt-2">{{ error }}</p>
 
     <button @click="submit" class="bg-green-700 px-3 text-white py-2  my-4 w-full hover:bg-green-600">Login</button>
+
+    <p class="text-sm text-center mt-4">
+      If you have no Account?
+      <span
+         @click="router.push('/register')"
+        class="text-blue-600 cursor-pointer"
+      >
+        Register
+      </span>
+    </p>
   </div>
 </template>
