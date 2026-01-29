@@ -1,9 +1,12 @@
 <script setup>
 import { useCartStore } from "../store/useCartStore"
+import { useAuthStore } from "../store/useAuthStore"
 import { useRouter } from "vue-router"
 
 const cart = useCartStore()
 const router = useRouter()
+const auth = useAuthStore()
+
 
 </script>
 
@@ -26,13 +29,43 @@ const router = useRouter()
                             </svg>
                             <span class="text-xs">Search</span>
                         </button>
-                        <!--Account button-->
-                        <button class="flex item-center gap-1 hover:text-black">
+                       
+                        <!-- Account -->
+                        <div v-if="!auth.isLoggedIn">
+                        <button
+                            @click="router.push('/login')"
+                            class="flex items-center gap-1 hover:text-black"
+                        >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
-                            <span class="text-xs">Account</span>
+                            <span class="text-xs">Login</span>
                         </button>
+                        </div>
+
+                        <div v-else class="relative group">
+                        <button class="flex items-center gap-1 hover:text-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span class="text-xs">{{ auth.user.name }}</span>
+                        </button>
+
+                        <!-- Dropdown -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white border rounded shadow
+                                    opacity-0 group-hover:opacity-100 transition">
+                            <a class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                            <a class="block px-4 py-2 hover:bg-gray-100">Orders</a>
+                            <a class="block px-4 py-2 hover:bg-gray-100">Wishes</a>
+                            <button
+                            @click="auth.logout()"
+                            class="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-500"
+                            >
+                            Sign Out
+                            </button>
+                        </div>
+                        </div>
+
 
                         <!--Cart button-->
                         <button

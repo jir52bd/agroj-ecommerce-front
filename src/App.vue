@@ -4,6 +4,16 @@ import HeadingNav from './layout/HeadingNav.vue';
 import MainNav from './layout/MainNav.vue';
 import Footer from './layout/Footer.vue';
 // import Navbar from './layout/Navbar.vue';
+import { onMounted } from 'vue';
+import { useAuthStore } from './store/useAuthStore';
+
+const auth = useAuthStore()
+
+onMounted(
+  () =>{
+     auth.loadUser
+  }
+)
 
 
 </script>
