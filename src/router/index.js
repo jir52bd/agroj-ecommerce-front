@@ -118,11 +118,11 @@ const routes = [
       name: 'MyAccount',
       component: () => import('../pages/profile/MyAccount.vue'),
     },
-    // {
-    //   path: 'orders',
-    //   name: 'MyOrders',
-    //   component: () => import('../pages/profile/MyOrders.vue'),
-    // },
+    {
+      path: 'orders',
+      name: 'MyOrders',
+      component: () => import('../pages/profile/MyOrders.vue'),
+    },
     {
       path: 'wishlist',
       name: 'Wishlist',

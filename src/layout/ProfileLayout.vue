@@ -29,6 +29,7 @@ const router = useRouter()
         <ProfileLink to="/profile" label="My Account" />
         <ProfileLink to="/profile/orders" label="My Orders" />
         <ProfileLink to="/profile/wishlist" label="My Wishlist" />
+        <ProfileLink to="/profile/offers" label="My Offers" />
         <ProfileLink to="/profile/settings" label="Settings" />
         <button
           @click="auth.logout(); router.push('/')"
