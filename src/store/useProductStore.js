@@ -12,8 +12,9 @@ export const useProductStore = defineStore("products", {
         category: "area-rugs",
         sub: "living-room",
         price: 2000,
-        discount: 20, // %
+        discount: 20,
         thumbnail: img1,
+        inStock: true,
       },
       {
         id: 2,
@@ -23,18 +24,22 @@ export const useProductStore = defineStore("products", {
         price: 1500,
         discount: 0,
         thumbnail: img2,
+        inStock: true,
       },
       {
         id: 3,
         name: "Kids Fun Rug",
         category: "area-rugs",
-        sub:"bedroom",
-        child: null,
+        sub: "bedroom",
         price: 900,
         discount: 0,
         thumbnail: img3,
-    },
+        inStock: false,
+      },
     ],
+
+    // Wishlist (store-level)
+    wishlist: [],
 
     search: "",
     minPrice: 0,
@@ -54,7 +59,32 @@ export const useProductStore = defineStore("products", {
             p.discount > 0
               ? Math.round(p.price - (p.price * p.discount) / 100)
               : p.price,
+          // UI for helper
+          isWishlisted: state.wishlist.some(w => w.id === p.id),
         }))
+    },
+
+    wishlistCount: (state) => state.wishlist.length,
+  },
+
+  actions: {
+    // Add / Remove Wishlist
+    toggleWishlist(product) {
+      const index = this.wishlist.findIndex(p => p.id === product.id)
+
+      if (index === -1) {
+        this.wishlist.push(product)
+      } else {
+        this.wishlist.splice(index, 1)
+      }
+    },
+
+    removeFromWishlist(id) {
+      this.wishlist = this.wishlist.filter(p => p.id !== id)
+    },
+
+    clearWishlist() {
+      this.wishlist = []
     },
   },
 })

@@ -9,6 +9,7 @@ export const products = [
     child: "modern",
     price: 1200,
     thumbnail: "/img/products/1.jpg",
+    inStock: true,
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const products = [
     child: null,
     price: 1500,
     thumbnail: "/img/products/2.jpg",
+    inStock: false,
   },
   {
     id: 3,
@@ -27,5 +29,6 @@ export const products = [
     child: null,
     price: 900,
     thumbnail: "/img/products/3.jpg",
+    inStock: true,
   },
 ]

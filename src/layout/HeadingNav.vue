@@ -2,7 +2,9 @@
 import { useCartStore } from "../store/useCartStore"
 import { useAuthStore } from "../store/useAuthStore"
 import { useRouter } from "vue-router"
+import { useProductStore } from "../store/useProductStore"
 
+const productStore = useProductStore()
 const cart = useCartStore()
 const router = useRouter()
 const auth = useAuthStore()
@@ -29,7 +31,36 @@ const auth = useAuthStore()
                             </svg>
                             <span class="text-xs">Search</span>
                         </button>
-                       
+                       <button
+    @click="$router.push('/wishlist')"
+    class="relative flex items-center gap-1 hover:text-black"
+  >
+    <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              class="size-6"
+              :class="productStore.wishlistCount ? 'text-red-500' : 'text-gray-300'"
+            >
+              <path
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5
+                -1.935 0-3.597 1.126-4.312 2.733
+                -.715-1.607-2.377-2.733-4.313-2.733
+                C5.1 3.75 3 5.765 3 8.25
+                c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
+
+                <span class="text-xs">Wishlist</span>
+
+                <span
+                v-if="productStore.wishlistCount"
+                class="absolute -top-2 -right-3 bg-green-500 text-white
+                        text-[10px] px-1.5 rounded-full"
+                >
+                {{ productStore.wishlistCount }}
+                </span>
+            </button>
                         <!-- Account -->
                         <div v-if="!auth.isLoggedIn">
                         <button
