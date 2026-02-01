@@ -67,7 +67,7 @@ const suggestions = computed(() => {
       Product not found
     </p>
 
-       <div v-if="suggestions.length" class="mt-16 space-x-7">
+       <div v-if="suggestions.length" class="my-16 space-x-7 px-10">
         <h2 class="text-sm tracking-widest uppercase mb-6">
           You may also like
         </h2>
@@ -76,7 +76,7 @@ const suggestions = computed(() => {
           <div
             v-for="item in suggestions"
             :key="item.id"
-            class="text-center cursor-pointer"
+            class="text-center cursor-pointer border rounded pt-2"
           >
             <img
               :src="item.thumbnail"
@@ -93,7 +93,7 @@ const suggestions = computed(() => {
 
             <button
               @click="cart.addToCart(item)"
-              class="mt-2 text-xs underline"
+              class="my-2 text-xs py-2 px-6 bg-green-700 rounded hover:bg-gray-500 text-white"
             >
               Add to cart
             </button>
