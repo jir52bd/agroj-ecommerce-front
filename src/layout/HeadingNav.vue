@@ -32,7 +32,7 @@ const auth = useAuthStore()
                             <span class="text-xs">Search</span>
                         </button>
                        <button
-    @click="$router.push('/wishlist')"
+    @click="router.push('/wishlist')"
     class="relative flex items-center gap-1 hover:text-black"
   >
     <svg

@@ -13,6 +13,19 @@ const product = computed(() =>
     p => p.id === Number(route.params.id)
   )
 )
+
+//Related products logic
+const suggestions = computed(() => {
+  if (!product.value) return []
+
+  return productStore.filteredProducts
+    .filter(p =>
+      p.category === product.value.category &&
+      p.id !== product.value.id
+    )
+    .slice(0, 4)
+})
+
 </script>
 
 <template>
@@ -41,16 +54,51 @@ const product = computed(() =>
       </div>
 
       <button
-  @click="cart.addToCart(product)"
-  class="bg-black text-white px-4 py-2 text-xs"
->
-  Add to Cart
-</button>
+        @click="cart.addToCart(product)"
+        class="bg-black text-white px-4 py-2 text-xs"
+      >
+        Add to Cart
+      </button>
     </div>
 
   </div>
 
-  <p v-else class="text-center py-20 text-gray-500">
-    Product not found
-  </p>
+    <p v-else class="text-center py-20 text-gray-500">
+      Product not found
+    </p>
+
+       <div v-if="suggestions.length" class="mt-16 space-x-7">
+        <h2 class="text-sm tracking-widest uppercase mb-6">
+          You may also like
+        </h2>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <div
+            v-for="item in suggestions"
+            :key="item.id"
+            class="text-center cursor-pointer"
+          >
+            <img
+              :src="item.thumbnail"
+              class="w-full h-40 object-cover mb-3"
+            />
+
+            <p class="text-sm font-medium">
+              {{ item.name }}
+            </p>
+
+            <p class="text-xs text-gray-600 mt-1">
+              ৳ {{ item.finalPrice }}
+            </p>
+
+            <button
+              @click="cart.addToCart(item)"
+              class="mt-2 text-xs underline"
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+
 </template>

@@ -36,6 +36,26 @@ export const useProductStore = defineStore("products", {
         thumbnail: img3,
         inStock: false,
       },
+      {
+        id: 4,
+        name: "Jute Markating Bag",
+        category: "outdoor-rugs",
+        sub: "big-rag",
+        price: 1000,
+        discount: 0,
+        thumbnail: img3,
+        inStock: false,
+      },
+      {
+        id: 5,
+        name: "Kids Fun Rug",
+        category: "area-rugs",
+        sub: "bedroom",
+        price: 1200,
+        discount: 0,
+        thumbnail: img2,
+        inStock: false,
+      },
     ],
 
     // Wishlist (store-level)

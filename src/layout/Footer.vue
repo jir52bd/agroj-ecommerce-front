@@ -1,7 +1,11 @@
 <template>
   <footer class="bg-[#ebe7df] text-gray-800">
-    <div class="text-5xl text-green-600 font-bold text-center py-6">
+    <!-- <div class="text-5xl text-green-600 font-bold text-center py-6">
         <p>Agroj</p>
+    </div> -->
+    <div class="flex justify-center items-center w-auto h-16 py-10">
+      <img src="../assets/img/agroj-logo-3.png" alt="Agroj Logo" class="h-16 w-auto">
+      <img src="../assets/img/agroj-logo-2.png" alt="Agroj Logo" class="h-16 w-auto">
     </div>
     <div
       class="max-w-7xl mx-auto px-6 py-12

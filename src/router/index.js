@@ -102,12 +102,12 @@ const routes = [
   //   meta: { requiresAuth: true },
   // },
 
-  // {
-  //   path: '/wishes',
-  //   name: 'Wishes',
-  //   component: () => import('../pages/Wishes.vue'),
-  //   meta: { requiresAuth: true },
-  // },
+  {
+    path: '/wishlist',
+    name: 'wishlist',
+    component: () => import('../pages/WishList.vue'),
+  },
+
 {
   path: '/profile',
   component: () => import('../layout/ProfileLayout.vue'),
