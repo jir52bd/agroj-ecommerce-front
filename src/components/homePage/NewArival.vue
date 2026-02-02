@@ -6,39 +6,64 @@
         NEW ARRIVALS
       </h2>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div
-          v-for="(item, index) in products"
-          :key="index"
-          class="text-center group cursor-pointer"
+          v-for="p in products"
+          :key="p.id"
+          class="border p-2 relative bg-white"
         >
-          <!-- Image Wrapper -->
-          <div class="relative w-full max-w-[220px] mx-auto mb-4">
-
-            <!-- Default Image -->
-            <img
-              :src="item.image"
-              :alt="item.title"
-              class="w-full transition-opacity duration-500 group-hover:opacity-0"
-            />
-
-            <!-- Hover Image -->
-            <img
-              :src="item.hoverImage"
-              :alt="item.title"
-              class="w-full absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
+          <router-link :to="`/product/${p.id}`">
+    
+              <img :src="p.thumbnail" class="h-auto w-auto object-cover" />
+          </router-link>
+          <div class="mt-2 flex justify-between">
+            <h3 class="text-sm">{{ p.name }}</h3>
+            <button
+            @click.stop="store.toggleWishlist(p)"
+            class="absolute top-3 right-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                class="size-6"
+                :class="p.isWishlisted ? 'text-red-500' : 'text-gray-300'"
+              >
+                <path
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5
+                  -1.935 0-3.597 1.126-4.312 2.733
+                  -.715-1.607-2.377-2.733-4.313-2.733
+                  C5.1 3.75 3 5.765 3 8.25
+                  c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                />
+              </svg>
+            </button>
           </div>
-
-          <p class="text-sm font-medium text-gray-800">
-            {{ item.title }}
-          </p>
-          <p class="text-xs text-gray-600 mt-1">
-            from Tk {{ item.price }}
-          </p>
+          
+          <div class="text-xs mt-1">
+            <span
+              v-if="p.discount"
+              class="line-through text-gray-400 mr-2"
+            >
+              ৳ {{ p.price }}
+            </span>
+            <span class="font-semibold text-red-600">
+              ৳ {{ p.finalPrice }}
+            </span>
+          </div>
+          <button
+          @click="cart.addToCart(p)"
+          class="mt-2 w-full bg-green-800 rounded-sm text-white text-xs py-2 hover:bg-gray-800"
+          >
+          Add to Cart
+          </button>
+          </div>
         </div>
+        <p v-if="!products.length" class="mt-10 text-center text-gray-500">
+          No products found
+        </p>
       </div>
-
+      
       <div class="flex justify-center mt-12">
         <button
           class="bg-green-700 text-white text-xs tracking-widest px-8 py-3 hover:bg-green-600 transition"
@@ -47,55 +72,73 @@
         </button>
       </div>
 
-    </div>
   </section>
 </template>
 
 
-<script>
-export default {
-  name: "NewArrivals",
-  data() {
-    return {
-      products: [
-        {
-          title: "Burgundy - Trinket Basket",
-          price: "1950.00",
-          image: "../src/assets/img/products/1.jpg",
-          hoverImage: "../src/assets/img/products/1-hover.jpg",
-        },
-        {
-          title: "Bluewave - Trinket Basket",
-          price: "1950.00",
-          image: "../src/assets/img/products/2.jpg",
-          hoverImage: "../src/assets/img/products/1-hover.jpg",
-        },
-        {
-          title: "Sandstone - Trinket Basket",
-          price: "1950.00",
-          image: "../src/assets/img/products/3.jpg",
-          hoverImage: "../src/assets/img/products/1-hover.jpg",
-        },
-        {
-          title: "Raven - Trinket Basket",
-          price: "1950.00",
-          image: "../src/assets/img/products/4.jpg",
-          hoverImage: "../src/assets/img/products/1-hover.jpg",
-        },
-        {
-          title: "Burgundy - Doormat",
-          price: "795.00",
-          image: "../src/assets/img/products/5.jpg",
-          hoverImage: "../src/assets/img/products/1-hover.jpg",
-        },
-        {
-          title: "Bluewave - Doormat",
-          price: "795.00",
-          image: "../src/assets/img/products/6.jpg",
-          hoverImage: "../src/assets/img/products/1-hover.jpg",
-        },
-      ],
-    };
-  },
-};
+<script setup>
+import { useRoute } from "vue-router"
+import { computed } from "vue"
+import { useProductStore } from "../../store/useProductStore"
+import { useCartStore } from "../../store/useCartStore"
+// import Breadcrumb from "../components/Breadcrumb.vue"
+
+
+const route = useRoute()
+const store = useProductStore()
+const cart = useCartStore()
+
+const products = computed(() => {
+  return store.filteredProducts.filter(p => {
+    if (route.params.category && p.category !== route.params.category) return false
+    if (route.params.sub && p.sub !== route.params.sub) return false
+    return true
+  })
+})
+
+// export default {
+//   name: "NewArrivals",
+//   data() {
+//     return {
+//       products: [
+//         {
+//           title: "Burgundy - Trinket Basket",
+//           price: "1950.00",
+//           image: "../src/assets/img/products/1.jpg",
+//           hoverImage: "../src/assets/img/products/1-hover.jpg",
+//         },
+//         {
+//           title: "Bluewave - Trinket Basket",
+//           price: "1950.00",
+//           image: "../src/assets/img/products/2.jpg",
+//           hoverImage: "../src/assets/img/products/1-hover.jpg",
+//         },
+//         {
+//           title: "Sandstone - Trinket Basket",
+//           price: "1950.00",
+//           image: "../src/assets/img/products/3.jpg",
+//           hoverImage: "../src/assets/img/products/1-hover.jpg",
+//         },
+//         {
+//           title: "Raven - Trinket Basket",
+//           price: "1950.00",
+//           image: "../src/assets/img/products/4.jpg",
+//           hoverImage: "../src/assets/img/products/1-hover.jpg",
+//         },
+//         {
+//           title: "Burgundy - Doormat",
+//           price: "795.00",
+//           image: "../src/assets/img/products/5.jpg",
+//           hoverImage: "../src/assets/img/products/1-hover.jpg",
+//         },
+//         {
+//           title: "Bluewave - Doormat",
+//           price: "795.00",
+//           image: "../src/assets/img/products/6.jpg",
+//           hoverImage: "../src/assets/img/products/1-hover.jpg",
+//         },
+//       ],
+//     };
+//   },
+// };
 </script>

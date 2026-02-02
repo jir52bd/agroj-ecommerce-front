@@ -3,6 +3,7 @@ import { defineStore } from "pinia"
 export const useCartStore = defineStore("cart", {
   state: () => ({
     items: [], // { product, qty }
+    isOpen: false,
   }),
 
   getters: {
@@ -17,6 +18,16 @@ export const useCartStore = defineStore("cart", {
   },
 
   actions: {
+    toggleCart() {
+      this.isOpen = !this.isOpen
+    },
+
+    openCart() {
+      this.isOpen = true
+    },
+    closeCart() {
+      this.isOpen = false
+    },
     addToCart(product) {
       const found = this.items.find(
         (i) => i.product.id === product.id

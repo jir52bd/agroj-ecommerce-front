@@ -1,12 +1,22 @@
 <template>
   <footer class="bg-[#ebe7df] text-gray-800">
-    <!-- <div class="text-5xl text-green-600 font-bold text-center py-6">
-        <p>Agroj</p>
-    </div> -->
-    <div class="flex justify-center items-center w-auto h-16 py-10">
-      <img src="../assets/img/agroj-logo-3.png" alt="Agroj Logo" class="h-16 w-auto">
-      <img src="../assets/img/agroj-logo-2.png" alt="Agroj Logo" class="h-16 w-auto">
-    </div>
+    <div class="relative flex justify-center items-center h-16 py-10">
+    
+    <!-- Logo 1 -->
+    <img
+      src="../assets/img/agroj-logo-3.png"
+      alt="Agroj Logo 1"
+      class="logo logo-one h-16 w-auto absolute"
+    />
+
+    <!-- Logo 2 -->
+    <img
+      src="../assets/img/agroj-logo-2.png"
+      alt="Agroj Logo 2"
+      class="logo logo-two h-16 w-auto absolute"
+    />
+
+  </div>
     <div
       class="max-w-7xl mx-auto px-6 py-12
              grid grid-cols-1 md:grid-cols-3 gap-10"
@@ -107,3 +117,36 @@
     </div>
   </footer>
 </template>
+<style scoped>
+.logo {
+  opacity: 0;
+  animation: fadeSwitch 4s infinite;
+}
+
+.logo-one {
+  animation-delay: 0s;
+}
+
+.logo-two {
+  animation-delay: 2s;
+}
+
+@keyframes fadeSwitch {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+</style>

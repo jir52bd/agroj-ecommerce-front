@@ -1,6 +1,6 @@
 <template>
   <nav class="w-full border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4 z-30">
       <ul class="flex items-center justify-center gap-8 py-4 text-xs font-medium uppercase">
 
         <!-- Static menu -->

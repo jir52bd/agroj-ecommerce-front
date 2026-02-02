@@ -6,6 +6,8 @@ import Footer from './layout/Footer.vue';
 // import Navbar from './layout/Navbar.vue';
 import { onMounted } from 'vue';
 import { useAuthStore } from './store/useAuthStore';
+import CartDrawer from './components/cart/CartDrawer.vue';
+import FloatingCart from './components/cart/FloatingCart.vue';
 
 const auth = useAuthStore()
 
@@ -28,21 +30,13 @@ onMounted(
     <main class="p-0">
       <router-view />
     </main>
+
+    <FloatingCart />
+    <CartDrawer />
     <Footer />
   </div>  
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+/*  */
 </style>
